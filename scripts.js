@@ -23,11 +23,26 @@ function updateTimer(){
     // getElementsByClassName ALWAYS returns an Array, even if there is 0 or 1 thing
     document.getElementsByClassName('weeks')[0].innerHTML = weeks
     // querySelector will use css rules to find a match,
-    // and only get the first one... NOT an array
+    // and only get the first one... NOT an array        
     document.querySelector('.days').innerHTML = days
     document.querySelector('.hours').innerHTML = hours
     document.querySelector('.minutes').innerHTML = minutes
     document.querySelector('.seconds').innerHTML = seconds
+
+    // == compares values
+    // === compares values AND datatype
+    // minutes = "0"
+    // minutes == 0 TRUE
+    // minutes === 0 NOT TRUE
+
+    // var messageDiv = document.querySelector('.message');
+    
+    if(seconds === 0){
+        // updatee the dom to say "Hooray, another minute closer!"
+        document.querySelector('.message').innerHTML = "One minute closer to Christmas!";
+    }else if(seconds >= 5){
+        document.querySelector('.message').innerHTML = "";
+    }
 
 }
 
@@ -38,4 +53,5 @@ console.log(timeStamp)
 // setInterval will:
 //  1. call the function in arg1
 //  2. every arg2 milliseconds
+updateTimer()
 setInterval(updateTimer,1000)
