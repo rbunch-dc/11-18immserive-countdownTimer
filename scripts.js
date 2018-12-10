@@ -7,7 +7,28 @@ function updateTimer(){
     // getTime() can be run against a Date Object, and will convert to the #
     // of millseconds since 1-1-1970
     var nowAsTimestamp = now.getTime();
-    console.log(nowAsTimestamp);
+    // console.log(nowAsTimestamp);
+    var timeRemaining = timeStamp - nowAsTimestamp;
+    // console.log(timeRemaining)
+    
+	var seconds = Math.floor((timeRemaining / 1000) % 60);
+	var minutes = Math.floor((timeRemaining / 1000 / 60) % 60);
+	var hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+	var days = Math.floor((timeRemaining / (1000 * 60 * 60 * 24)) % 7);
+    var weeks = Math.floor(timeRemaining / (1000 * 60 * 60 * 24 * 7));
+    
+    // console.log(seconds);
+    // console.log(minutes);
+
+    // getElementsByClassName ALWAYS returns an Array, even if there is 0 or 1 thing
+    document.getElementsByClassName('weeks')[0].innerHTML = weeks
+    // querySelector will use css rules to find a match,
+    // and only get the first one... NOT an array
+    document.querySelector('.days').innerHTML = days
+    document.querySelector('.hours').innerHTML = hours
+    document.querySelector('.minutes').innerHTML = minutes
+    document.querySelector('.seconds').innerHTML = seconds
+
 }
 
 var endDate = new Date("December 25, 2018");
